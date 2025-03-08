@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JadwalController extends Controller
 {
@@ -24,11 +25,13 @@ class JadwalController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'tanggal' => 'required',
             'jam_mulai' => 'required',
             'jam_selesai' => 'required',
             'nama_pengajar' => 'required',
             'mata_pelajaran' => 'required',
             'kelas' => 'required',
+            'ruang' => 'required',
             'keterangan' => 'nullable',
         ]);
 
@@ -44,11 +47,13 @@ class JadwalController extends Controller
         }
 
         $validated = $request->validate([
+            'tanggal' => 'required',
             'jam_mulai' => 'required',
             'jam_selesai' => 'required',
             'nama_pengajar' => 'required',
             'mata_pelajaran' => 'required',
             'kelas' => 'required',
+            'ruang' => 'required',
             'keterangan' => 'nullable',
         ]);
 
@@ -64,6 +69,8 @@ class JadwalController extends Controller
         }
 
         $jadwal->delete();
+         // Reset auto-increment
+        DB::statement('ALTER TABLE jadwals AUTO_INCREMENT = 1');
         return response()->json(['message' => 'Jadwal deleted successfully']);
     }
 }

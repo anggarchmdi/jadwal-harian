@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
+            $table->date('tanggal');
             $table->time('jam_mulai');
             $table->time('jam_selesai');
             $table->string('nama_pengajar');
             $table->string('mata_pelajaran');
             $table->string('kelas');
+            $table->string('ruang');
             $table->text('keterangan')->nullable();
             $table->timestamp('kadaluarsa')->nullable();
             $table->timestamps();
