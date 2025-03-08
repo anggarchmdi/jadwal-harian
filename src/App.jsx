@@ -1,11 +1,27 @@
-function App() {
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import AddData from './pages/AddData'
+import Detail from './pages/Detail'
+import NotFound from './pages/NotFound'
+import EditData from './pages/EditData'
 
+
+
+function App() {
   return (
-    <>
-      <h1 className="text-3xl font-bold  text-red-700 underline">
-      Hello world!
-    </h1>
-    </>
+    <div>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='add-data' element={<AddData />} />
+          <Route path='detail' element={<Detail />} />
+          <Route path="/edit/:id" element={<EditData />} />
+
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </Router>
+    </div>
   )
 }
 

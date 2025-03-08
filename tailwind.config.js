@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'bree-serif': ['Bree Serif', 'serif'],
+      },
+    },
   },
   plugins: [],
 }
